@@ -17,6 +17,15 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  webpack: (config, { webpack }) => {
+    config.plugins.push(
+      new webpack.IgnorePlugin({
+        resourceRegExp: /^pg-native$|^cloudflare:sockets$/,
+      }),
+    );
+
+    return config;
+  },
 };
 
 export default config;
